@@ -7,11 +7,25 @@ import Wpro1 from "../assets/images/Wpro1.jpg";
 import Wpro2 from "../assets/images/Wpro2.jpg";
 import Wpro3 from "../assets/images/Wpro3.jpg";
 
+import Snowfall from "react-snowfall";
+
 const Programs = () => {
   const [activeTab, setActiveTab] = useState("ladies");
 
   return (
+    
     <div className="min-h-screen bg-[#898989] py-16">
+       <Snowfall
+        color="#82c3d9"
+        snowflakeCount={120}
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: 50,
+          pointerEvents: "none",
+        }}
+      />
       <div className="max-w-6xl mx-auto px-4">
         <h1 className="text-4xl font-bold text-center text-white mb-3">
           Explore Our Programs
