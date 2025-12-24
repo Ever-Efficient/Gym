@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import bg4 from "../assets/images/bg4.png";
-
+import Snowfall from "react-snowfall";
 const Packages = () => {
   const [activeTab, setActiveTab] = useState("ladies");
 
@@ -151,6 +151,17 @@ const Packages = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-[#898989] to-[#898989] py-16">
+       <Snowfall
+        color="#82c3d9"
+        snowflakeCount={120}
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: 50,
+          pointerEvents: "none",
+        }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
