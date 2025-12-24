@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Snowfall from "react-snowfall";
 
 import W1 from "../assets/images/W1.jpg";
 import W2 from "../assets/images/W2.png";
@@ -70,6 +71,17 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-[#898989]">
+       <Snowfall
+        color="#82c3d9"
+        snowflakeCount={120}
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: 50,
+          pointerEvents: "none",
+        }}
+      />
       <Header
         title="Welcome to our Fitness Blogs"
         subtitle="Stay motivated and informed with our curated fitness content! Whether you're starting your fitness journey or looking to level up, our blog is packed with helpful insights to support your goals"
