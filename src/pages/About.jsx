@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import vision from "../assets/images/vision.jpg";
 import TrainerCard from "../components/TrainerCard";
+import Snowfall from "react-snowfall";
 
 //Trainer Images
 import T1 from "../assets/images/T1.jpg";
@@ -59,6 +60,17 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+       <Snowfall
+        color="#82c3d9"
+        snowflakeCount={120}
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: 50,
+          pointerEvents: "none",
+        }}
+      />
       <Header
         title="Your Strength, Your Journey"
         subtitle="Discover a community dedicated to helping you achieve your personal best. State-of-the-art facilities, expert trainers, and a motivating atmosphere await."
