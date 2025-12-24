@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import PricingCard from "../components/PricingCard";
 import Gymgirl from "../assets/images/Gymgirl.png";
+import Snowfall from "react-snowfall";
 
 const Home = () => {
   const pricingPlans = [
@@ -47,6 +48,17 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+       <Snowfall
+        color="#82c3d9"
+        snowflakeCount={120}
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: 50,
+          pointerEvents: "none",
+        }}
+      />
       <Header />
 
       <section className="py-16 px-4 bg-linear-to-br from-gray-100 to-blue-50">
