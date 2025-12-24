@@ -11,6 +11,7 @@ import T8 from "../assets/images/T8.jpg";
 import T9 from "../assets/images/T9.jpg";
 import T10 from "../assets/images/T10.jpg";
 
+import Snowfall from "react-snowfall";
 const TrainersPage = () => {
   const [activeSpecialty, setActiveSpecialty] = useState("All");
 
@@ -103,6 +104,17 @@ const TrainersPage = () => {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-[#898989] to-[#898989] py-12 px-4 sm:px-6 lg:px-8">
+       <Snowfall
+        color="#82c3d9"
+        snowflakeCount={120}
+        style={{
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          zIndex: 50,
+          pointerEvents: "none",
+        }}
+      />
       <div className="max-w-7xl mx-auto">
         <header className="align-text-top mb-16">
           <h1 className="text-5xl font-bold text-white mb-4">
