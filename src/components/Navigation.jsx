@@ -1,21 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import { NAV_LINKS } from "../data/navigation";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about-us" },
-    { name: "Programs", path: "/programs" },
-    { name: "Packages", path: "/packages" },
-    { name: "Trainers", path: "/trainers" },
-    { name: "Contact Us", path: "/contact-us" },
-    { name: "Blog", path: "/blog" },
-  ];
-
-  // Simple scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -35,9 +25,9 @@ const Navigation = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
-            {menuItems.map((item, index) => (
+            {NAV_LINKS.map((item) => (
               <Link
-                key={index}
+                key={item.path}
                 to={item.path}
                 onClick={scrollToTop}
                 className="text-gray-700 hover:text-yellow-500 font-medium transition duration-300 hover:underline"
@@ -51,6 +41,8 @@ const Navigation = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 focus:outline-none"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
             >
               <svg
                 className="w-6 h-6"
@@ -81,9 +73,9 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              {menuItems.map((item, index) => (
+              {NAV_LINKS.map((item) => (
                 <Link
-                  key={index}
+                  key={item.path}
                   to={item.path}
                   onClick={scrollToTop}
                   className="text-gray-700 hover:text-yellow-500 font-medium transition duration-300 py-2 hover:underline"
