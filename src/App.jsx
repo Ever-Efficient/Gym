@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Snowfall from "react-snowfall";
+import SnowEffect from "./components/SnowEffect";
 import ScrollToTop from "./components/ScrollToTop";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -15,17 +15,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Snowfall
-          color="#82c3d9"
-          snowflakeCount={120}
-          style={{
-            position: "fixed",
-            width: "100vw",
-            height: "100vh",
-            zIndex: 50,
-            pointerEvents: "none",
-          }}
-        />
+        <SnowEffect />
         <ScrollToTop />
         <Navigation />
         <main>
