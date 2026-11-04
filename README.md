@@ -63,6 +63,7 @@ Gym/
 │   │   ├── packages.js     # Membership plans and comparison matrix
 │   │   ├── pricing.js      # Featured pricing tiers for the home page
 │   │   ├── programs.js     # Ladies and gents training program offerings
+│   │   ├── snowflakes.js   # 6-fold symmetrical ice crystal SVG vectors
 │   │   └── trainers.js     # Trainer profiles and specialty categories
 │   ├── pages/              # Route views
 │   │   ├── Home.jsx        # Landing page with hero, pricing, and features
