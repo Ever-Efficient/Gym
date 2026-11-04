@@ -8,3 +8,4 @@ export { default as ProgramCard } from "./ProgramCard";
 export { default as PackageCard } from "./PackageCard";
 export { default as BlogCard } from "./BlogCard";
 export { default as FeatureCard } from "./FeatureCard";
+export { default as SnowEffect } from "./SnowEffect";
