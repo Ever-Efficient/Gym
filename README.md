@@ -50,6 +50,7 @@ Gym/
 │   │   ├── PricingCard.jsx # Featured pricing card component
 │   │   ├── ProgramCard.jsx # Ladies & gents workout program card
 │   │   ├── ScrollToTop.jsx # Route change scroll reset listener
+│   │   ├── SnowEffect.jsx  # Multi-layered 3D snowfall effect
 │   │   ├── TrainerCard.jsx # Trainer profile card with initials fallback
 │   │   └── index.js        # Centralized component barrel exports
 │   ├── data/               # Centralized data and configuration modules
