@@ -1,82 +1,19 @@
 import Header from "../components/Header";
-import vision from "../assets/images/vision.jpg";
 import TrainerCard from "../components/TrainerCard";
-import Snowfall from "react-snowfall";
-
-//Trainer Images
-import T1 from "../assets/images/T1.jpg";
-import T10 from "../assets/images/T10.jpg";
-import T3 from "../assets/images/T3.jpg";
-import T8 from "../assets/images/T8.jpg";
-
-//Gallery images
-import G1 from "../assets/images/G1.jpg";
-import G2 from "../assets/images/G2.jpg";
-import G3 from "../assets/images/G3.jpg";
-import G4 from "../assets/images/G4.jpg";
-import G5 from "../assets/images/G5.jpg";
-import G6 from "../assets/images/G6.jpg";
-import G7 from "../assets/images/G7.jpg";
-import G8 from "../assets/images/G8.jpg";
+import vision from "../assets/images/vision.jpg";
+import { ABOUT_PAGE_TRAINERS } from "../data/trainers";
+import { GALLERY_IMAGES } from "../data/gallery";
 
 const AboutPage = () => {
-  const trainers = [
-    {
-      name: "Ishara De Silva",
-      role: "Group Workout & Zumba Instructor",
-      specialty: "Cardio & Group Fitness",
-      image: T3,
-    },
-    {
-      name: "Nadeesha Fernando",
-      role: "Certified Personal Trainer (Women's Fitness)",
-      specialty: "Women's Fitness",
-      image: T10,
-    },
-    {
-      name: "Thilina Jayasinghe",
-      role: "Strength & Conditioning Coach",
-      specialty: "Strength Training",
-      image: T1,
-    },
-    {
-      name: "Dinuka Ranatunga",
-      role: "Nutrition & Wellness Consultant",
-      specialty: "Holistic Wellness",
-      image: T8,
-    },
-  ];
-
-  const galleryImages = [
-    { id: 1, src: G1, alt: "Gym Facility 1" },
-    { id: 2, src: G2, alt: "Gym Facility 2" },
-    { id: 3, src: G3, alt: "Gym Members Training" },
-    { id: 4, src: G4, alt: "Weight Training Area" },
-    { id: 5, src: G5, alt: "Cardio Section" },
-    { id: 6, src: G6, alt: "Group Class Session" },
-    { id: 7, src: G7, alt: "Modern Equipment" },
-    { id: 8, src: G8, alt: "Locker Room" },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
-       <Snowfall
-        color="#82c3d9"
-        snowflakeCount={120}
-        style={{
-          position: "fixed",
-          width: "100vw",
-          height: "100vh",
-          zIndex: 50,
-          pointerEvents: "none",
-        }}
-      />
       <Header
         title="Your Strength, Your Journey"
         subtitle="Discover a community dedicated to helping you achieve your personal best. State-of-the-art facilities, expert trainers, and a motivating atmosphere await."
         showButton={false}
       />
 
+      {/* Vision & Mission Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -126,6 +63,7 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Gym Gallery Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -140,7 +78,7 @@ const AboutPage = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {galleryImages.map((image) => (
+            {GALLERY_IMAGES.map((image) => (
               <div
                 key={image.id}
                 className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
@@ -169,6 +107,7 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Featured Trainers Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#898989]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -182,8 +121,8 @@ const AboutPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {trainers.map((trainer, index) => (
-              <TrainerCard key={index} trainer={trainer} />
+            {ABOUT_PAGE_TRAINERS.map((trainer) => (
+              <TrainerCard key={trainer.name} trainer={trainer} />
             ))}
           </div>
         </div>
