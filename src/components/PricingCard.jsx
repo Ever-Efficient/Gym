@@ -1,30 +1,16 @@
 import bg1 from "../assets/images/bg1.png";
 import bg2 from "../assets/images/bg2.png";
-
 import bg4 from "../assets/images/bg4.png";
 
+const BACKGROUND_BY_PLAN_ID = {
+  1: bg1,
+  2: bg4,
+  3: bg2,
+};
+
 const PricingCard = ({ plan }) => {
-  const getBackgroundImage = (planId) => {
-    switch (planId) {
-      case 1:
-        return bg1;
-      case 2:
-        return bg4;
-      case 3:
-        return bg2;
-      default:
-        return bg1;
-    }
-  };
-
-  const getTextColor = (planId, highlight) => {
-    if (highlight) return "text-yellow-500";
-    return "text-yellow-400";
-  };
-
-  const titleColor = getTextColor(plan.id, plan.highlight);
-  const priceColor = getTextColor(plan.id, plan.highlight);
-  const featureColor = getTextColor(plan.id, plan.highlight);
+  const bgImage = BACKGROUND_BY_PLAN_ID[plan.id] || bg1;
+  const textColor = plan.highlight ? "text-yellow-500" : "text-yellow-400";
 
   return (
     <div
@@ -37,7 +23,7 @@ const PricingCard = ({ plan }) => {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-80 transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-90"
         style={{
-          backgroundImage: `url(${getBackgroundImage(plan.id)})`,
+          backgroundImage: `url(${bgImage})`,
         }}
       />
 
@@ -49,19 +35,19 @@ const PricingCard = ({ plan }) => {
 
       <div className="relative z-10 p-8 text-center h-full flex flex-col">
         <h3
-          className={`text-3xl font-bold mb-4 ${titleColor} group-hover:text-white transition-colors duration-300`}
+          className={`text-3xl font-bold mb-4 ${textColor} group-hover:text-white transition-colors duration-300`}
         >
           {plan.name}
         </h3>
 
         <div className="mb-6">
           <span
-            className={`text-4xl font-bold ${priceColor} group-hover:text-white transition-colors duration-300`}
+            className={`text-4xl font-bold ${textColor} group-hover:text-white transition-colors duration-300`}
           >
             Rs. {plan.price}
           </span>
           <span
-            className={`ml-2 text-lg ${priceColor} group-hover:text-white transition-colors duration-300`}
+            className={`ml-2 text-lg ${textColor} group-hover:text-white transition-colors duration-300`}
           >
             /{plan.period}
           </span>
@@ -82,7 +68,7 @@ const PricingCard = ({ plan }) => {
                 <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
               </svg>
               <span
-                className={`text-lg ${featureColor} group-hover:text-white transition-colors duration-300`}
+                className={`text-lg ${textColor} group-hover:text-white transition-colors duration-300`}
               >
                 {feature}
               </span>
