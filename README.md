@@ -7,13 +7,18 @@ A modern, responsive, and high-performance gym and fitness website built with **
 ## ✨ Features
 
 - **📱 Fully Responsive Design:** Clean, mobile-first design optimized across mobile devices, tablets, and desktops.
-- **⚡ Modern Architecture & Performance:** Powered by React 19 and Vite with an optimized bundle size (~282 kB) and rapid build times (~700ms).
-- **🎨 Sleek UI/UX:** Styled using modern Tailwind CSS 4 utility classes with custom gradients, smooth transitions, and hover effects.
+- **⚡ Modern Architecture & Performance:** Powered by React 19 and Vite with an optimized bundle size and rapid build times.
+- **🛡️ Enterprise-Grade Security:**
+  - Client-side input sanitization and XSS prevention ([`security.js`](file:///F:/React%20Projects/Gym/Gym/src/utils/security.js)).
+  - RFC 5322 email regex validation and form length boundaries.
+  - Client-side submission rate limiting / cooldown protection against spam floods.
+  - Strict HTTP security headers in [`vercel.json`](file:///F:/React%20Projects/Gym/Gym/vercel.json) (`CSP`, `HSTS`, `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`).
+  - Strict `rel="noopener noreferrer"` enforcement on all external blank-target anchors.
+- **🧪 Comprehensive Playwright E2E Testing:** Automated testing suite covering routing, interactive state changes, and security boundaries.
 - **🗺️ Client-Side Routing:** Dynamic navigation across all pages using **React Router DOM v7** with automatic scroll-to-top on route changes.
 - **📦 Centralized Data Layer:** Complete separation of concerns with static content and configurations decoupled into dedicated data modules (`src/data/`).
 - **🧩 Reusable Component Library:** Modular UI components including `PricingCard`, `PackageCard`, `ProgramCard`, `TrainerCard`, `BlogCard`, `Header`, `Navigation`, and `Footer`.
-- **❄️ Smooth Visual Effects:** Persistent, ambient snowfall animation powered by `react-snowfall` configured globally for flicker-free page transitions.
-- **📍 Interactive Contact & Location:** Integrated Google Maps embed, direct call/email/WhatsApp links, and gym operating schedule.
+- **❄️ Smooth Visual Effects:** Authentic 6-fold symmetrical 3D ice crystal snowflake animation powered by `react-snowfall` configured globally for flicker-free page transitions.
 
 ---
 
@@ -27,6 +32,7 @@ A modern, responsive, and high-performance gym and fitness website built with **
 | **Routing** | [React Router DOM v7](https://reactrouter.com/) |
 | **Icons** | [Lucide React](https://lucide.dev/) |
 | **Visual Effects** | [React Snowfall](https://github.com/carlop/react-snowfall) |
+| **Testing** | [Playwright](https://playwright.dev/) |
 | **Linting** | ESLint 9 |
 
 ---
@@ -65,6 +71,8 @@ Gym/
 │   │   ├── programs.js     # Ladies and gents training program offerings
 │   │   ├── snowflakes.js   # 6-fold symmetrical ice crystal SVG vectors
 │   │   └── trainers.js     # Trainer profiles and specialty categories
+│   ├── utils/              # Security and validation utilities
+│   │   └── security.js     # Input sanitization, email validation & rate limiting
 │   ├── pages/              # Route views
 │   │   ├── Home.jsx        # Landing page with hero, pricing, and features
 │   │   ├── About.jsx       # Vision, mission, gallery, and trainers
@@ -76,10 +84,15 @@ Gym/
 │   ├── App.jsx             # App layout, global snowfall, and route config
 │   ├── index.css           # Tailwind CSS imports and global styles
 │   └── main.jsx            # Application root entry point
+├── tests/                  # Playwright E2E test suites
+│   ├── navigation.spec.js  # Routing, page loads, and scroll-to-top tests
+│   ├── features.spec.js    # Tab switches, specialty filters, and snowfall tests
+│   └── security.spec.js    # Input sanitization, rate limiting, and link security tests
+├── playwright.config.js    # Playwright configuration
 ├── package.json            # Project dependencies and npm scripts
 ├── tailwind.config.js      # Tailwind CSS configuration
 ├── vite.config.js          # Vite configuration
-└── vercel.json             # Deployment rewrite rules for SPA routing
+└── vercel.json             # Deployment rewrite rules and HTTP security headers
 ```
 
 ---
@@ -113,31 +126,43 @@ Ensure you have [Node.js](https://nodejs.org/) (v18 or higher recommended) and `
 
 ---
 
+## 🧪 Testing with Playwright
+
+Run the automated End-to-End test suite:
+
+```bash
+# Run all tests headlessly
+npm test
+
+# Run tests in UI mode
+npx playwright test --ui
+
+# View HTML test report
+npx playwright show-report
+```
+
+---
+
 ## 📜 Available Scripts
 
 - **`npm run dev`**: Launches Vite's fast HMR development server.
 - **`npm run build`**: Builds and optimizes the app for production in the `dist/` directory.
+- **`npm test`**: Executes Playwright E2E automated test suites.
 - **`npm run preview`**: Locally previews the production build output.
 - **`npm run lint`**: Runs ESLint across the codebase to ensure code quality.
 
 ---
 
-## 🌐 Deployment
+## 🌐 Deployment & Security Headers
 
-The application includes a `vercel.json` configuration for seamless deployment on [Vercel](https://vercel.com/) with SPA route rewriting:
+The application includes a `vercel.json` configuration for seamless deployment on [Vercel](https://vercel.com/) with SPA route rewriting and industry-standard HTTP security headers:
 
-```json
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-```
-
-Can also be deployed to [Netlify](https://www.netlify.com/), [GitHub Pages](https://pages.github.com/), or any static hosting service.
+- `Content-Security-Policy (CSP)`
+- `Strict-Transport-Security (HSTS)`
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: SAMEORIGIN`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
 
 ---
 
