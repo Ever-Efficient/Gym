@@ -48,15 +48,18 @@ const PackageCard = ({ plan }) => {
           </ul>
         </div>
 
-        <button
-          className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 ${
+        <a
+          href="https://wa.me/94777644590"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 text-center block cursor-pointer ${
             plan.popular
               ? "bg-yellow-500 hover:bg-yellow-600 text-black shadow-lg"
               : "bg-yellow-500 hover:bg-gray-900 text-white"
           }`}
         >
           Inquire on Whatsapp
-        </button>
+        </a>
       </div>
     </div>
   );
